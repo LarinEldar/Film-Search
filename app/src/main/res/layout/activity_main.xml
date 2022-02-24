@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/yellow">
+    android:background="@color/gray">
 
-    <FrameLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/top_menu"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="5dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
         android:background="@color/purple_700"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/batman" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fantastic"
+            android:scaleType="fitXY"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/northman"
+            android:scaleType="fitXY"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topgun"
+            android:scaleType="fitXY"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/uncharted"
+            android:scaleType="fitXY"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/top_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Постеры предоставлены https://www.movieposters.com/"
+        android:textColor="@color/white"
+        android:autoLink="web"
+        android:clickable="true"/>
 
     <FrameLayout
         android:id="@+id/bottom_menu"
@@ -21,15 +76,51 @@
         android:background="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-
     <LinearLayout
         android:layout_width="300dp"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="@+id/top_menu"
         app:layout_constraintBottom_toBottomOf="@id/bottom_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/purple_700">
+        android:background="@drawable/gradient_shape"
+        android:padding="5dp">
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Меню"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="onClickButton"/>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Избранное"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="onClickButton"/>
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Посмотреть позже"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="onClickButton"/>
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Подборки"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="onClickButton"/>
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Настройки"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="onClickButton"/>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
