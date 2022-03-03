@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/gray">
+    android:background="@drawable/gradient_shape">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/top_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
         app:cardCornerRadius="15dp"
         android:layout_margin="5dp"
         app:cardElevation="5dp">
@@ -69,58 +69,32 @@
         android:autoLink="web"
         android:clickable="true"/>
 
-    <FrameLayout
-        android:id="@+id/bottom_menu"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <LinearLayout
-        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="@+id/top_menu"
-        app:layout_constraintBottom_toBottomOf="@id/bottom_menu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/gradient_shape"
-        android:padding="5dp">
-        <Button
-            android:id="@+id/button1"
+        android:id="@+id/appbar_layout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Меню"
-            android:background="?selectableItemBackgroundBorderless"
-            android:onClick="onClickButton"/>
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Избранное"
-            android:background="?selectableItemBackgroundBorderless"
-            android:onClick="onClickButton"/>
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Посмотреть позже"
-            android:background="?selectableItemBackgroundBorderless"
-            android:onClick="onClickButton"/>
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Подборки"
-            android:background="?selectableItemBackgroundBorderless"
-            android:onClick="onClickButton"/>
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Настройки"
-            android:background="?selectableItemBackgroundBorderless"
-            android:onClick="onClickButton"/>
-    </LinearLayout>
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/top_bar"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_baseline_menu_24"
+            app:menu="@menu/top_bar"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_bar"
+        android:background="@color/purple_500"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
