@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/favorites"
+        android:id="@+id/favorites"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_baseline_favorite_border_24"/>
+    <item
+        android:title="@string/watch_later"
+        android:id="@+id/watch_later"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_outline_watch_later_24"/>
+    <item
+        android:title="@string/selection"
+        android:id="@+id/selection"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_outline_video_library_24"/>
+</menu>

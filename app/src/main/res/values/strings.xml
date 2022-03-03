@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Film Search</string>
+    <string name="settings">Настройки</string>
+    <string name="favorites">Избранное</string>
+    <string name="selection">Подборка</string>
+    <string name="watch_later">Смотреть позже</string>
 </resources>
