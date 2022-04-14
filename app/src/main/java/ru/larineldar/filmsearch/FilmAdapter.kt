@@ -28,12 +28,9 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
         holder.image.setImageResource(items[position].poster)
         holder.title.text = items[position].title
         holder.description.text = items[position].description
+
         holder.itemView.setOnClickListener{
-            val intent = Intent(it.context, DetailsActivity::class.java)
-            val bundle = Bundle()
-            bundle.putParcelable("film", items[position])
-            intent.putExtras(bundle)
-            it.context.startActivity(intent)
+            (holder.itemView.context as MainActivity).launchDetailsFragment(items[position])
         }
     }
 
