@@ -24,12 +24,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createClickListener() {
-
-
         findViewById<BottomNavigationView>(R.id.bottom_bar).setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.favorites -> {
-                    Toast.makeText(this, R.string.favorites, Toast.LENGTH_SHORT).show()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_placeholder, FavoritesFragment())
+                        .addToBackStack(null)
+                        .commit()
                     true
                 }
                 R.id.watch_later -> {
