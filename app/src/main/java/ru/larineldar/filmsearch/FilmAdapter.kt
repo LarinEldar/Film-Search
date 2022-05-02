@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
-    val items = mutableListOf<Film>()
+    private val items = mutableListOf<Film>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val title = itemView.findViewById<TextView>(R.id.film_title)
