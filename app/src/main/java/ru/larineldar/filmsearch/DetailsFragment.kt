@@ -23,12 +23,12 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val film = arguments?.get("film") as Film
-
         val image = view.findViewById<AppCompatImageView>(R.id.details_poster)
         val description = view.findViewById<TextView>(R.id.details_description)
         val title = view.findViewById<TextView>(R.id.details_title)
         val favorite = view.findViewById<FloatingActionButton>(R.id.details_fab_favorites)
         val fabShare = view.findViewById<FloatingActionButton>(R.id.details_fab)
+
         image.setImageResource(film.poster)
         description.text = film.description
         title.text = film.title
@@ -39,6 +39,7 @@ class DetailsFragment : Fragment() {
             else
                 R.drawable.ic_baseline_favorite_border_24
         )
+
         favorite.setOnClickListener{
             if (!film.isInFavorites) {
                 favorite.setImageResource(R.drawable.ic_baseline_favorite_24)
@@ -48,6 +49,7 @@ class DetailsFragment : Fragment() {
                 film.isInFavorites = false
             }
         }
+
         fabShare.setOnClickListener{
             val intent = Intent(Intent.ACTION_SEND)
             intent.putExtra(Intent.EXTRA_TEXT,
