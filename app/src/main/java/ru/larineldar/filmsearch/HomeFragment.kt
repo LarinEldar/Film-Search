@@ -1,6 +1,11 @@
 package ru.larineldar.filmsearch
 
 import android.os.Bundle
+import android.transition.Scene
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.transition.TransitionSet
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,10 +41,29 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val root = view.findViewById<ViewGroup>(R.id.fragment_home_root)
+        val scene = Scene.getSceneForLayout(root, R.layout.merge_home_fragment_content, requireContext())
 
-        val searchView = view.findViewById<SearchView>(R.id.search_view)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        val transition = TransitionSet().apply {
+            duration = 300
+            addTransition(Slide().apply {
+                slideEdge = Gravity.TOP
+                addTarget(R.id.search_view)
+            })
+            addTransition(Slide().apply {
+                addTarget(R.id.recycler_view)
+            })
+        }
+
+        TransitionManager.go(scene, transition)
+        initView()
+    }
+
+    fun initView(){
+        val searchView = requireActivity().findViewById<SearchView>(R.id.search_view)
+        val recyclerView = requireActivity().findViewById<RecyclerView>(R.id.recycler_view)
         val adapter = FilmAdapter()
+
         adapter.addItems(films)
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(SpacingItemDecoration(8))
