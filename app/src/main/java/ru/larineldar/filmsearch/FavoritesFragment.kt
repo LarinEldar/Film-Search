@@ -22,8 +22,11 @@ class FavoritesFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.favorites_recycler)
         recyclerView.adapter = FilmAdapter()
         recyclerView.addItemDecoration(SpacingItemDecoration(8))
+
+        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), 2)
     }
 }

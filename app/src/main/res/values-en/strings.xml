@@ -6,4 +6,5 @@
     <string name="selection">Selection</string>
     <string name="watch_later">Watch later</string>
     <string name="back_pressed">Double tap for exit</string>
+    <string name="home">Home</string>
 </resources>
