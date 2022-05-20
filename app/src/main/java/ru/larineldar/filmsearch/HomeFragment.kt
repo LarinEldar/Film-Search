@@ -41,25 +41,11 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val root = view.findViewById<ViewGroup>(R.id.fragment_home_root)
-        val scene = Scene.getSceneForLayout(root, R.layout.merge_home_fragment_content, requireContext())
-
-        val transition = TransitionSet().apply {
-            duration = 300
-            addTransition(Slide().apply {
-                slideEdge = Gravity.TOP
-                addTarget(R.id.search_view)
-            })
-            addTransition(Slide().apply {
-                addTarget(R.id.recycler_view)
-            })
-        }
-
-        TransitionManager.go(scene, transition)
         initView()
+        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), 1)
     }
 
-    fun initView(){
+    private fun initView(){
         val searchView = requireActivity().findViewById<SearchView>(R.id.search_view)
         val recyclerView = requireActivity().findViewById<RecyclerView>(R.id.recycler_view)
         val adapter = FilmAdapter()
