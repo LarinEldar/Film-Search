@@ -9,6 +9,7 @@ class RatingDonutView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null
 ) : View(context, attributeSet) {
+
     private val oval = RectF()
 
     private var radius: Float = 0f

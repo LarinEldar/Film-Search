@@ -10,28 +10,28 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import ru.larineldar.filmsearch.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {
+
+    private lateinit var binding: FragmentDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false)
+        binding = FragmentDetailsBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val film = arguments?.get("film") as Film
-        val image = view.findViewById<AppCompatImageView>(R.id.details_poster)
-        val description = view.findViewById<TextView>(R.id.details_description)
-        val title = view.findViewById<TextView>(R.id.details_title)
-        val favorite = view.findViewById<FloatingActionButton>(R.id.details_fab_favorites)
-        val fabShare = view.findViewById<FloatingActionButton>(R.id.details_fab)
+        val favorite = binding.detailsFabFavorites
 
-        image.setImageResource(film.poster)
-        description.text = film.description
-        title.text = film.title
+        binding.detailsPoster.setImageResource(film.poster)
+        binding.detailsDescription.text = film.description
+        binding.detailsTitle.text = film.title
 
         favorite.setImageResource(
             if(film.isInFavorites)
@@ -50,7 +50,7 @@ class DetailsFragment : Fragment() {
             }
         }
 
-        fabShare.setOnClickListener{
+        binding.detailsFab.setOnClickListener{
             val intent = Intent(Intent.ACTION_SEND)
             intent.putExtra(Intent.EXTRA_TEXT,
                 "Check out this film: ${film.title} \n\n ${film.description}")

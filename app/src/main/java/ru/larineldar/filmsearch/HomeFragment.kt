@@ -12,9 +12,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
+import ru.larineldar.filmsearch.databinding.FragmentHomeBinding
 import java.util.*
 
 class HomeFragment : Fragment() {
+    private lateinit var binding : FragmentHomeBinding
+
     val films = listOf<Film>(
         Film("Зеленая миля", R.drawable.thegreenmile, "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.", 9.9f),
         Film("Побег из шоушенка", R.drawable.theshawshankredemtion, "Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.", 9.8f),
@@ -28,16 +31,12 @@ class HomeFragment : Fragment() {
         Film("Властелин колец: Братство Кольца", R.drawable.thelordoftheringsthefellowshipofthering, "Сказания о Средиземье — это хроника Великой войны за Кольцо, длившейся не одну тысячу лет. Тот, кто владел Кольцом, получал неограниченную власть, но был обязан служить злу.", 7.9f)
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,8 +45,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView(){
-        val searchView = requireActivity().findViewById<SearchView>(R.id.search_view)
-        val recyclerView = requireActivity().findViewById<RecyclerView>(R.id.recycler_view)
+        val searchView = binding.searchView
+        val recyclerView = binding.recyclerView
         val adapter = FilmAdapter()
 
         adapter.addItems(films)
