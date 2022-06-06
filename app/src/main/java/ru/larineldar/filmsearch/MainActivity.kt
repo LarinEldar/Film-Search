@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import ru.larineldar.filmsearch.databinding.ActivityMainBinding
 
 const val HOME_FRAGMENT_TAG = "home"
 const val FAVORITE_FRAGMENT_TAG = "favorite"
@@ -15,18 +13,20 @@ const val SELECTION_FRAGMENT_TAG = "selection"
 
 class MainActivity : AppCompatActivity() {
     var timeBackPressed = 0L
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        createClickListener()
+        initBottomBar()
 
         startFragment(HomeFragment(), HOME_FRAGMENT_TAG)
     }
 
-    private fun createClickListener() {
-        findViewById<BottomNavigationView>(R.id.bottom_bar).setOnNavigationItemSelectedListener {
+    private fun initBottomBar() {
+        binding.bottomBar.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.home -> {
                     startFragment(HomeFragment(), HOME_FRAGMENT_TAG)

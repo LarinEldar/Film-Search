@@ -10,22 +10,25 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import ru.larineldar.filmsearch.databinding.ItemFilmBinding
 
 class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Film>()
+    private lateinit var binding : ItemFilmBinding
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val title = itemView.findViewById<TextView>(R.id.film_title)
-        val description = itemView.findViewById<TextView>(R.id.film_description)
-        val image = itemView.findViewById<ImageView>(R.id.film_image)
+        val title = binding.filmTitle
+        val description = binding.filmDescription
+        val image = binding.filmImage
 
-        val rating = itemView.findViewById<RatingDonutView>(R.id.rating)
+        val rating = binding.rating
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_film, parent,false)
-        return ViewHolder(v)
+        binding = ItemFilmBinding.bind(v)
+        return ViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -51,7 +54,7 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
         return items.size
     }
 
-    public fun addItems(items: List<Film>){
+    fun addItems(items: List<Film>){
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
