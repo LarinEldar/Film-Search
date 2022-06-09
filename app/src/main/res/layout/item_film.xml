@@ -54,7 +54,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ru.larineldar.filmsearch.RatingDonutView
+    <ru.larineldar.filmsearch.view.customviews.RatingDonutView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/rating"

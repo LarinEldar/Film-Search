@@ -1,9 +1,10 @@
-package ru.larineldar.filmsearch
+package ru.larineldar.filmsearch.view.customviews
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import ru.larineldar.filmsearch.R
 
 class RatingDonutView @JvmOverloads constructor(
     context: Context,

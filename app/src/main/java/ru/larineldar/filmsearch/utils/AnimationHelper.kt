@@ -1,4 +1,4 @@
-package ru.larineldar.filmsearch
+package ru.larineldar.filmsearch.utils
 
 import android.app.Activity
 import android.view.View

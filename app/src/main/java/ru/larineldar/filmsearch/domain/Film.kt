@@ -1,4 +1,4 @@
-package ru.larineldar.filmsearch
+package ru.larineldar.filmsearch.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

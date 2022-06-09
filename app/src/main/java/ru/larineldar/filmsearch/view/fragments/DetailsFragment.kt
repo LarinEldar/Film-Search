@@ -1,15 +1,13 @@
-package ru.larineldar.filmsearch
+package ru.larineldar.filmsearch.view.fragments
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import ru.larineldar.filmsearch.domain.Film
+import ru.larineldar.filmsearch.R
 import ru.larineldar.filmsearch.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {
