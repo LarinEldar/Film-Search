@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import ru.larineldar.filmsearch.domain.Film
 import ru.larineldar.filmsearch.R
+import ru.larineldar.filmsearch.data.ApiConstants
 import ru.larineldar.filmsearch.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {
@@ -27,7 +29,11 @@ class DetailsFragment : Fragment() {
         val film = arguments?.get("film") as Film
         val favorite = binding.detailsFabFavorites
 
-        binding.detailsPoster.setImageResource(film.poster)
+        Glide.with(view.context)
+            .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
+            .centerCrop()
+            .into(binding.detailsPoster)
+
         binding.detailsDescription.text = film.description
         binding.detailsTitle.text = film.title
 

@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ru.larineldar.filmsearch.view.MainActivity
 import ru.larineldar.filmsearch.R
+import ru.larineldar.filmsearch.data.ApiConstants
 import ru.larineldar.filmsearch.databinding.ItemFilmBinding
 import ru.larineldar.filmsearch.domain.Film
 
@@ -19,18 +21,19 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
         val title = binding.filmTitle
         val description = binding.filmDescription
         val image = binding.filmImage
-
         val rating = binding.rating
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_film, parent,false)
-        binding = ItemFilmBinding.bind(v)
+        binding = ItemFilmBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.image.setImageResource(items[position].poster)
+        Glide.with(holder.image)
+            .load(ApiConstants.IMAGES_URL + "w342" + items[position].poster)
+            .into(holder.image)
+
         holder.title.text = items[position].title
         holder.description.text = items[position].description
 
