@@ -20,7 +20,10 @@ class SelectionFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), 4)
+        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), POSITION_IN_BOTTOM_BAR)
 
+    }
+    companion object{
+        const val POSITION_IN_BOTTOM_BAR = 4
     }
 }

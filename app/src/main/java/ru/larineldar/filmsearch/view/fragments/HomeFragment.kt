@@ -9,7 +9,6 @@ import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import ru.larineldar.filmsearch.domain.Film
 import ru.larineldar.filmsearch.view.rv_adapters.FilmAdapter
-import ru.larineldar.filmsearch.R
 import ru.larineldar.filmsearch.view.rv_adapters.SpacingItemDecoration
 import ru.larineldar.filmsearch.databinding.FragmentHomeBinding
 import ru.larineldar.filmsearch.utils.AnimationHelper
@@ -46,20 +45,21 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView()
-        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), 1)
+        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), POSITION_IN_BOTTOM_BAR)
     }
 
     private fun initView() {
         val searchView = binding.searchView
         val recyclerView = binding.recyclerView
 
+        adapter.setOnBindListener { position ->
+            if (position == adapter.itemCount - 1) {
+                viewModel.loadNextPage()
+            }
+        }
 
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(SpacingItemDecoration(8))
-
-        searchView.setOnClickListener {
-            searchView.isIconified = false
-        }
+        recyclerView.addItemDecoration(SpacingItemDecoration(RV_PADDING_IN_DP))
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -77,5 +77,10 @@ class HomeFragment : Fragment() {
             }
 
         })
+    }
+
+    companion object{
+        const val RV_PADDING_IN_DP = 8
+        const val POSITION_IN_BOTTOM_BAR = 1
     }
 }

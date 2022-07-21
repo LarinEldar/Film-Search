@@ -20,7 +20,11 @@ class WatchLaterFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), 3)
+        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), POSITION_IN_BOTTOM_BAR)
 
+    }
+
+    companion object{
+        const val POSITION_IN_BOTTOM_BAR = 3
     }
 }

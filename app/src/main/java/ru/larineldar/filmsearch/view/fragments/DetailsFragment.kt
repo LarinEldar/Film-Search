@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import ru.larineldar.filmsearch.domain.Film
 import ru.larineldar.filmsearch.R
+import ru.larineldar.filmsearch.data.ApiConstants
 import ru.larineldar.filmsearch.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {
@@ -24,10 +26,14 @@ class DetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val film = arguments?.get("film") as Film
+        val film = arguments?.get(BUNDLE_FILM_TAG) as Film
         val favorite = binding.detailsFabFavorites
 
-        binding.detailsPoster.setImageResource(film.poster)
+        Glide.with(view.context)
+            .load(ApiConstants.IMAGES_URL + IMAGE_SIZE + film.poster)
+            .centerCrop()
+            .into(binding.detailsPoster)
+
         binding.detailsDescription.text = film.description
         binding.detailsTitle.text = film.title
 
@@ -55,5 +61,10 @@ class DetailsFragment : Fragment() {
             intent.type = "text/plain"
             startActivity(intent)
         }
+    }
+
+    companion object{
+        const val IMAGE_SIZE = "w780"
+        const val BUNDLE_FILM_TAG = "film"
     }
 }

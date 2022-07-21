@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
     fun launchDetailsFragment(film : Film){
         val bundle = Bundle()
-        bundle.putParcelable("film", film)
+        bundle.putParcelable(DetailsFragment.BUNDLE_FILM_TAG, film)
         val fragment = DetailsFragment()
         fragment.arguments = bundle
 

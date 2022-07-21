@@ -31,8 +31,12 @@ class FavoritesFragment: Fragment() {
 
         val recyclerView = binding.favoritesRecycler
         recyclerView.adapter = FilmAdapter()
-        recyclerView.addItemDecoration(SpacingItemDecoration(8))
+        recyclerView.addItemDecoration(SpacingItemDecoration(HomeFragment.RV_PADDING_IN_DP))
 
-        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), 2)
+        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), POSITION_IN_BOTTOM_BAR)
+    }
+
+    companion object{
+        const val POSITION_IN_BOTTOM_BAR = 2
     }
 }
