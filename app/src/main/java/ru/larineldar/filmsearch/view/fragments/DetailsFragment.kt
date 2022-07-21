@@ -26,11 +26,11 @@ class DetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val film = arguments?.get("film") as Film
+        val film = arguments?.get(BUNDLE_FILM_TAG) as Film
         val favorite = binding.detailsFabFavorites
 
         Glide.with(view.context)
-            .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
+            .load(ApiConstants.IMAGES_URL + IMAGE_SIZE + film.poster)
             .centerCrop()
             .into(binding.detailsPoster)
 
@@ -61,5 +61,10 @@ class DetailsFragment : Fragment() {
             intent.type = "text/plain"
             startActivity(intent)
         }
+    }
+
+    companion object{
+        const val IMAGE_SIZE = "w780"
+        const val BUNDLE_FILM_TAG = "film"
     }
 }

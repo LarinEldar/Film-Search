@@ -16,6 +16,7 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Film>()
     private lateinit var binding : ItemFilmBinding
+    private var onBindListener: OnBindListener? = null
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val title = binding.filmTitle
@@ -31,7 +32,7 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.image)
-            .load(ApiConstants.IMAGES_URL + "w342" + items[position].poster)
+            .load(ApiConstants.IMAGES_URL + IMAGE_SIZE + items[position].poster)
             .into(holder.image)
 
         holder.title.text = items[position].title
@@ -40,6 +41,7 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
         holder.itemView.setOnClickListener{
             (holder.itemView.context as MainActivity).launchDetailsFragment(items[position])
         }
+
         val progress = (items[position].rating * 10).toInt()
         val anim = ValueAnimator.ofInt(0, progress)
 
@@ -49,6 +51,8 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
         anim.duration = 500
 
         anim.start()
+
+        onBindListener?.todoOnBind(position)
     }
 
     override fun getItemCount(): Int {
@@ -59,6 +63,18 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
+    }
+
+    fun setOnBindListener(onBindListener: OnBindListener){
+        this.onBindListener = onBindListener
+    }
+
+    fun interface OnBindListener{
+        fun todoOnBind(position: Int)
+    }
+
+    companion object{
+        const val IMAGE_SIZE = "w342"
     }
 
 }
