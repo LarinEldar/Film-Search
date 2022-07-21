@@ -1,12 +1,14 @@
-package ru.larineldar.filmsearch
+package ru.larineldar.filmsearch.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
+import ru.larineldar.filmsearch.view.rv_adapters.FilmAdapter
+import ru.larineldar.filmsearch.view.rv_adapters.SpacingItemDecoration
 import ru.larineldar.filmsearch.databinding.FragmentFavoritesBinding
+import ru.larineldar.filmsearch.utils.AnimationHelper
 
 class FavoritesFragment: Fragment() {
     private lateinit var binding : FragmentFavoritesBinding

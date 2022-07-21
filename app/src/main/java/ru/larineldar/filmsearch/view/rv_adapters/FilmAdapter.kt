@@ -1,16 +1,14 @@
-package ru.larineldar.filmsearch
+package ru.larineldar.filmsearch.view.rv_adapters
 
 import android.animation.ValueAnimator
-import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import ru.larineldar.filmsearch.view.MainActivity
+import ru.larineldar.filmsearch.R
 import ru.larineldar.filmsearch.databinding.ItemFilmBinding
+import ru.larineldar.filmsearch.domain.Film
 
 class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 

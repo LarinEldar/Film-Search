@@ -1,15 +1,13 @@
-package ru.larineldar.filmsearch
+package ru.larineldar.filmsearch.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import ru.larineldar.filmsearch.R
 import ru.larineldar.filmsearch.databinding.ActivityMainBinding
-
-const val HOME_FRAGMENT_TAG = "home"
-const val FAVORITE_FRAGMENT_TAG = "favorite"
-const val WATCH_LATER_FRAGMENT_TAG = "watch_later"
-const val SELECTION_FRAGMENT_TAG = "selection"
+import ru.larineldar.filmsearch.domain.Film
+import ru.larineldar.filmsearch.view.fragments.*
 
 class MainActivity : AppCompatActivity() {
     var timeBackPressed = 0L
@@ -92,6 +90,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object{
+        const val HOME_FRAGMENT_TAG = "home"
+        const val FAVORITE_FRAGMENT_TAG = "favorite"
+        const val WATCH_LATER_FRAGMENT_TAG = "watch_later"
+        const val SELECTION_FRAGMENT_TAG = "selection"
+
         const val TIME_INTERVAL_BACK_PRESSED = 2000
     }
 }

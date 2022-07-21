@@ -1,24 +1,10 @@
-package ru.larineldar.filmsearch
+package ru.larineldar.filmsearch.data
 
-import android.os.Bundle
-import android.transition.Scene
-import android.transition.Slide
-import android.transition.TransitionManager
-import android.transition.TransitionSet
-import android.view.Gravity
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.SearchView
-import androidx.recyclerview.widget.RecyclerView
-import ru.larineldar.filmsearch.databinding.FragmentHomeBinding
-import java.util.*
+import ru.larineldar.filmsearch.R
+import ru.larineldar.filmsearch.domain.Film
 
-class HomeFragment : Fragment() {
-    private lateinit var binding : FragmentHomeBinding
-
-    val films = listOf<Film>(
+class MainRepository {
+    val films = listOf(
         Film("Зеленая миля", R.drawable.thegreenmile, "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.", 9.9f),
         Film("Побег из шоушенка", R.drawable.theshawshankredemtion, "Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.", 9.8f),
         Film("Список Шиндлера", R.drawable.schindlerslist, "Фильм рассказывает реальную историю загадочного Оскара Шиндлера, члена нацистской партии, преуспевающего фабриканта, спасшего во время Второй мировой войны почти 1200 евреев.", 9.4f),
@@ -30,47 +16,4 @@ class HomeFragment : Fragment() {
         Film("Форрест Гамп", R.drawable.forrestgump, "Сидя на автобусной остановке, Форрест Гамп — не очень умный, но добрый и открытый парень — рассказывает случайным встречным историю своей необыкновенной жизни.", 8.0f),
         Film("Властелин колец: Братство Кольца", R.drawable.thelordoftheringsthefellowshipofthering, "Сказания о Средиземье — это хроника Великой войны за Кольцо, длившейся не одну тысячу лет. Тот, кто владел Кольцом, получал неограниченную власть, но был обязан служить злу.", 7.9f)
     )
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentHomeBinding.inflate(inflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initView()
-        AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), 1)
-    }
-
-    private fun initView(){
-        val searchView = binding.searchView
-        val recyclerView = binding.recyclerView
-        val adapter = FilmAdapter()
-
-        adapter.addItems(films)
-        recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(SpacingItemDecoration(8))
-
-        searchView.setOnClickListener {
-            searchView.isIconified = false
-        }
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-
-                val result = films.filter {
-                    it.title.toLowerCase(Locale.getDefault()).contains(newText.toLowerCase(Locale.getDefault()))
-                }
-                adapter.addItems(result)
-                return true
-            }
-
-        })
-    }
 }
