@@ -13,7 +13,7 @@ import java.util.Locale
 
 class Interactor (private val retrofitService: TmdbApi){
     fun getFilmsFromApi(page: Int, callback: HomeFragmentViewModel.ApiCallback) {
-        retrofitService.getPopFilms(API.KEY, Locale.getDefault().toString(), page)
+        retrofitService.getPopFilms(API.KEY, Locale.getDefault().toLanguageTag(), page)
             .enqueue(object : Callback<TmdbResultsDto>{
                 override fun onResponse(call: Call<TmdbResultsDto>, response: Response<TmdbResultsDto>) {
                     callback.onSuccess(Converter.converterApiListToDtoList(response.body()?.results))

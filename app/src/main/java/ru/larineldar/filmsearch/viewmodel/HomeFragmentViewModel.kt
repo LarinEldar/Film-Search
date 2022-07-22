@@ -2,13 +2,14 @@ package ru.larineldar.filmsearch.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.larineldar.filmsearch.App
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import ru.larineldar.filmsearch.domain.Film
 import ru.larineldar.filmsearch.domain.Interactor
 
-class HomeFragmentViewModel : ViewModel(){
+class HomeFragmentViewModel : ViewModel(), KoinComponent{
     val filmsListLiveData = MutableLiveData<List<Film>>()
-    private var interactor: Interactor = App.instance.interactor
+    private val interactor: Interactor by inject()
     private var page = 1
 
     init {
