@@ -5,13 +5,16 @@ import androidx.lifecycle.ViewModel
 import ru.larineldar.filmsearch.App
 import ru.larineldar.filmsearch.domain.Film
 import ru.larineldar.filmsearch.domain.Interactor
+import javax.inject.Inject
 
 class HomeFragmentViewModel : ViewModel(){
     val filmsListLiveData = MutableLiveData<List<Film>>()
-    private var interactor: Interactor = App.instance.interactor
+    @Inject
+    lateinit var interactor: Interactor
     private var page = 1
 
     init {
+        App.instance.dagger.inject(this)
         loadNextPage()
     }
 
