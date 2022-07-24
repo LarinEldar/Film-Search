@@ -9,9 +9,32 @@ import ru.larineldar.filmsearch.domain.Interactor
 class HomeFragmentViewModel : ViewModel(){
     val filmsListLiveData = MutableLiveData<List<Film>>()
     private var interactor: Interactor = App.instance.interactor
+    private var page = 1
 
     init {
-        val films = interactor.getFilmsMainRepository()
-        filmsListLiveData.postValue(films)
+        loadNextPage()
+    }
+
+    fun loadNextPage(){
+        interactor.getFilmsFromApi(page, object : ApiCallback {
+            override fun onSuccess(films: List<Film>) {
+                val oldItems = filmsListLiveData.value
+                val newItems = mutableListOf<Film>()
+
+                if(oldItems != null)
+                    newItems.addAll(oldItems)
+                newItems.addAll(films)
+
+                filmsListLiveData.postValue(newItems)
+            }
+
+            override fun onFailure() {}
+        })
+        page++
+    }
+
+    interface ApiCallback {
+        fun onSuccess(films: List<Film>)
+        fun onFailure()
     }
 }
