@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.larineldar.filmsearch.view.MainActivity
-import ru.larineldar.filmsearch.R
 import ru.larineldar.filmsearch.data.ApiConstants
 import ru.larineldar.filmsearch.databinding.ItemFilmBinding
 import ru.larineldar.filmsearch.domain.Film
@@ -42,7 +41,7 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
             (holder.itemView.context as MainActivity).launchDetailsFragment(items[position])
         }
 
-        val progress = (items[position].rating * 10).toInt()
+        val progress = (items[position].rating * RATING_TO_PROGRESS_0_100).toInt()
         val anim = ValueAnimator.ofInt(0, progress)
 
         anim.addUpdateListener {
@@ -75,6 +74,7 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
     companion object{
         const val IMAGE_SIZE = "w342"
+        const val RATING_TO_PROGRESS_0_100 = 10
     }
 
 }

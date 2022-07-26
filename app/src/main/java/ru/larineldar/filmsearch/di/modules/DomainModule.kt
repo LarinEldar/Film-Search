@@ -1,14 +1,14 @@
 package ru.larineldar.filmsearch.di.modules
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import ru.larineldar.filmsearch.data.TmdbApi
 import ru.larineldar.filmsearch.domain.Interactor
+import ru.larineldar.filmsearch.domain.InteractorImpl
 import javax.inject.Singleton
 
 @Module
-class DomainModule {
-    @Provides
+interface DomainModule {
+    @Binds
     @Singleton
-    fun provideInteractor(tmdbApi: TmdbApi): Interactor = Interactor(tmdbApi)
+    fun bindInteractor(interactor: InteractorImpl): Interactor
 }
