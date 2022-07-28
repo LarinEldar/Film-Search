@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/drawable/gradient_favorites.xml" value="0.143" />
+        <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/drawable/gradient_gray.xml" value="0.143" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/drawable/gradient_shape.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.143" />
+        <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.143" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/drawable/ic_launcher_background.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/drawable/ic_outline_settings_24.xml" value="0.143" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/drawable/ic_outline_video_library_24.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/layout/fragment_details.xml" value="0.1334853090172239" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/layout/fragment_settings.xml" value="0.2554347826086957" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/layout/fragment_watch_later.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/layout/item_film.xml" value="0.176" />
         <entry key="..\:/Users/Eldar/AndroidStudioProjects/FilmSearch/app/src/main/res/layout/merge_home_fragment_content.xml" value="0.1334853090172239" />

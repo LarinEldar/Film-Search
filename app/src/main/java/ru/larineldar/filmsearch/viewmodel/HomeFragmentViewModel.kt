@@ -36,6 +36,13 @@ class HomeFragmentViewModel : ViewModel(){
         page++
     }
 
+    fun reloadPage(){
+        println("dfgaghaeh")
+        page = 1
+        filmsListLiveData.postValue(listOf())
+        loadNextPage()
+    }
+
     interface ApiCallback {
         fun onSuccess(films: List<Film>)
         fun onFailure()

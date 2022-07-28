@@ -5,5 +5,10 @@
     <string name="selection">Подборка</string>
     <string name="watch_later">Смотреть позже</string>
     <string name="back_pressed">Нажмите еще раз для выхода</string>
-    <string name="home">Домой</string>
+    <string name="home">Главная</string>
+    <string name="popular">Популярные</string>
+    <string name="top_rated">Топ</string>
+    <string name="upcoming">Скоро</string>
+    <string name="now_playing">В кинотеатрах</string>
+    <string name="radio_group_header">Подборка на главном экране:</string>
 </resources>
