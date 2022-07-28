@@ -1,4 +1,5 @@
 package ru.larineldar.filmsearch.data
 
-class MainRepository {
+interface MainRepository {
+
 }
