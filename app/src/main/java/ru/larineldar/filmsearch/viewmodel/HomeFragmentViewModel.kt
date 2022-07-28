@@ -15,7 +15,11 @@ class HomeFragmentViewModel : ViewModel(){
 
     init {
         App.instance.dagger.inject(this)
+        instance = this
         loadNextPage()
+        interactor.registerOnSharedPreferenceChangeListener{_, _ ->
+            instance.reloadPage()
+        }
     }
 
     fun loadNextPage(){
@@ -37,7 +41,6 @@ class HomeFragmentViewModel : ViewModel(){
     }
 
     fun reloadPage(){
-        println("dfgaghaeh")
         page = 1
         filmsListLiveData.postValue(listOf())
         loadNextPage()
@@ -46,5 +49,9 @@ class HomeFragmentViewModel : ViewModel(){
     interface ApiCallback {
         fun onSuccess(films: List<Film>)
         fun onFailure()
+    }
+
+    companion object{
+        private lateinit var instance: HomeFragmentViewModel
     }
 }
