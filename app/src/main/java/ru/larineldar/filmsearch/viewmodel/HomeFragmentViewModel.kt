@@ -35,7 +35,9 @@ class HomeFragmentViewModel : ViewModel(){
                 filmsListLiveData.postValue(newItems)
             }
 
-            override fun onFailure() {}
+            override fun onFailure() {
+                filmsListLiveData.postValue(interactor.getFilmsFromDB())
+            }
         })
         page++
     }
@@ -43,6 +45,7 @@ class HomeFragmentViewModel : ViewModel(){
     fun reloadPage(){
         page = 1
         filmsListLiveData.postValue(listOf())
+        interactor.clearDB()
         loadNextPage()
     }
 

@@ -1,5 +1,9 @@
 package ru.larineldar.filmsearch.data
 
-interface MainRepository {
+import ru.larineldar.filmsearch.domain.Film
 
+interface MainRepository {
+    fun putFilmToDb(film: Film)
+    fun getAllFilmsFromDB(): List<Film>
+    fun clearDB()
 }

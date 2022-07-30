@@ -11,4 +11,8 @@ interface Interactor {
     fun setCategoryToPreference(category: String)
 
     fun registerOnSharedPreferenceChangeListener(listener: SharedPreferences.OnSharedPreferenceChangeListener)
+
+    fun getFilmsFromDB(): List<Film>
+
+    fun clearDB()
 }

@@ -1,6 +1,5 @@
 package ru.larineldar.filmsearch.domain
 
-import android.content.Context
 import android.content.SharedPreferences
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,7 +34,11 @@ class InteractorImpl @Inject constructor(
                     call: Call<TmdbResultsDto>,
                     response: Response<TmdbResultsDto>
                 ) {
-                    callback.onSuccess(Converter.converterApiListToDtoList(response.body()?.results))
+                    val films = Converter.converterApiListToDtoList(response.body()?.results)
+                    films.forEach{
+                        repo.putFilmToDb(it)
+                    }
+                    callback.onSuccess(films)
                 }
 
                 override fun onFailure(call: Call<TmdbResultsDto>, t: Throwable) {
@@ -54,5 +57,11 @@ class InteractorImpl @Inject constructor(
 
     override fun registerOnSharedPreferenceChangeListener(listener: SharedPreferences.OnSharedPreferenceChangeListener) {
         preference.registerOnSharedPreferenceChangeListener(listener)
+    }
+
+    override fun getFilmsFromDB(): List<Film> = repo.getAllFilmsFromDB()
+
+    override fun clearDB(){
+        repo.clearDB()
     }
 }
