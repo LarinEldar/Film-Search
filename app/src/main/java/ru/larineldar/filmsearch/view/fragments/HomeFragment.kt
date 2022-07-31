@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
-import ru.larineldar.filmsearch.domain.Film
+import ru.larineldar.filmsearch.data.entity.Film
 import ru.larineldar.filmsearch.view.rv_adapters.FilmAdapter
 import ru.larineldar.filmsearch.view.rv_adapters.SpacingItemDecoration
 import ru.larineldar.filmsearch.databinding.FragmentHomeBinding

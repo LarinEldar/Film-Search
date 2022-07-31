@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import ru.larineldar.filmsearch.domain.Film
+import ru.larineldar.filmsearch.data.entity.Film
 import ru.larineldar.filmsearch.R
 import ru.larineldar.filmsearch.data.ApiConstants
 import ru.larineldar.filmsearch.databinding.FragmentDetailsBinding

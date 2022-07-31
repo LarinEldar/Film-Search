@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ru.larineldar.filmsearch.R
 import ru.larineldar.filmsearch.databinding.ActivityMainBinding
-import ru.larineldar.filmsearch.domain.Film
+import ru.larineldar.filmsearch.data.entity.Film
 import ru.larineldar.filmsearch.view.fragments.*
 
 class MainActivity : AppCompatActivity() {

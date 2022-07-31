@@ -1,6 +1,7 @@
 package ru.larineldar.filmsearch.domain
 
 import android.content.SharedPreferences
+import ru.larineldar.filmsearch.data.entity.Film
 import ru.larineldar.filmsearch.viewmodel.HomeFragmentViewModel
 
 interface Interactor {

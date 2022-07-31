@@ -8,6 +8,7 @@ import ru.larineldar.filmsearch.data.API
 import ru.larineldar.filmsearch.data.MainRepository
 import ru.larineldar.filmsearch.data.PreferenceProvider
 import ru.larineldar.filmsearch.data.TmdbApi
+import ru.larineldar.filmsearch.data.entity.Film
 import ru.larineldar.filmsearch.data.entity.TmdbResultsDto
 import ru.larineldar.filmsearch.utils.Converter
 import ru.larineldar.filmsearch.viewmodel.HomeFragmentViewModel
@@ -35,9 +36,7 @@ class InteractorImpl @Inject constructor(
                     response: Response<TmdbResultsDto>
                 ) {
                     val films = Converter.converterApiListToDtoList(response.body()?.results)
-                    films.forEach{
-                        repo.putFilmToDb(it)
-                    }
+                    repo.putAllFilmsToDb(films)
                     callback.onSuccess(films)
                 }
 

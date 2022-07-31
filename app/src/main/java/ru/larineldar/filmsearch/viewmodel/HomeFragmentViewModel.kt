@@ -3,7 +3,7 @@ package ru.larineldar.filmsearch.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.larineldar.filmsearch.App
-import ru.larineldar.filmsearch.domain.Film
+import ru.larineldar.filmsearch.data.entity.Film
 import ru.larineldar.filmsearch.domain.Interactor
 import javax.inject.Inject
 

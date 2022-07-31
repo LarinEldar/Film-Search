@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import ru.larineldar.filmsearch.view.MainActivity
 import ru.larineldar.filmsearch.data.ApiConstants
 import ru.larineldar.filmsearch.databinding.ItemFilmBinding
-import ru.larineldar.filmsearch.domain.Film
+import ru.larineldar.filmsearch.data.entity.Film
 
 class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
