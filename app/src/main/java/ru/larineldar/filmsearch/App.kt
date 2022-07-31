@@ -10,7 +10,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        dagger = DaggerAppComponent.create()
+        dagger = DaggerAppComponent.builder().application(this).build()
     }
 
     companion object {

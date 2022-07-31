@@ -21,4 +21,9 @@
         android:id="@+id/selection"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_outline_video_library_24"/>
+    <item
+        android:title="@string/settings"
+        android:id="@+id/settings"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_outline_settings_24"/>
 </menu>

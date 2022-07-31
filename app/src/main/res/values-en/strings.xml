@@ -7,4 +7,9 @@
     <string name="watch_later">Watch later</string>
     <string name="back_pressed">Double tap for exit</string>
     <string name="home">Home</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="now_playing">Now Plaing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="radio_group_header">Selection on the home screen</string>
 </resources>

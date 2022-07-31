@@ -44,12 +44,13 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initView()
+        initRecyclerView()
+        initSearchView()
+        initSwipeRefresh()
         AnimationHelper.performFragmentCircularRevealAnimation(view, requireActivity(), POSITION_IN_BOTTOM_BAR)
     }
 
-    private fun initView() {
-        val searchView = binding.searchView
+    private fun initRecyclerView() {
         val recyclerView = binding.recyclerView
 
         adapter.setOnBindListener { position ->
@@ -60,6 +61,15 @@ class HomeFragment : Fragment() {
 
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(SpacingItemDecoration(RV_PADDING_IN_DP))
+
+    }
+
+    private fun initSearchView(){
+        val searchView = binding.searchView
+
+        searchView.setOnClickListener {
+            searchView.isIconified = false
+        }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -77,6 +87,15 @@ class HomeFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun initSwipeRefresh(){
+        val swipeRefresh = binding.homeSwipeRefresh
+
+        swipeRefresh.setOnRefreshListener {
+            viewModel.reloadPage()
+            swipeRefresh.isRefreshing = false
+        }
     }
 
     companion object{

@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.settings -> {
+                    startFragment(SettingsFragment(), SETTINGS_FRAGMENT_TAG)
+                    true
+                }
+
                 else -> false
             }
         }
@@ -94,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         const val FAVORITE_FRAGMENT_TAG = "favorite"
         const val WATCH_LATER_FRAGMENT_TAG = "watch_later"
         const val SELECTION_FRAGMENT_TAG = "selection"
-
+        const val SETTINGS_FRAGMENT_TAG = "settings"
         const val TIME_INTERVAL_BACK_PRESSED = 2000
     }
 }

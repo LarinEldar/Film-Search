@@ -11,5 +11,6 @@ import javax.inject.Singleton
 interface DatabaseModule {
     @Binds
     @Singleton
-    fun provideRepository(repo: MainRepositoryImpl): MainRepository
+    fun bindRepository(repo: MainRepositoryImpl): MainRepository
+
 }

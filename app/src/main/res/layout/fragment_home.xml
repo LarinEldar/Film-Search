@@ -2,50 +2,55 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_home_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.HomeFragment"
     android:background="@drawable/gradient_home"
-    android:id="@+id/fragment_home_root"
     android:visibility="invisible"
+    tools:context=".view.fragments.HomeFragment"
     tools:visibility="visible">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:background="#00000000"
+        android:fitsSystemWindows="true"
         app:elevation="0dp">
+
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:fitsSystemWindows="false"
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
             app:layout_scrollFlags="scroll|enterAlways"
             app:toolbarId="@+id/toolbar">
 
             <SearchView
+                android:id="@+id/search_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/search_view"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/search_background"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:background="@drawable/search_background"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/recycler_view"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/home_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/search_view"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_view" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
